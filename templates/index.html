@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Optimizador de Consultas SQL</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+        main {
+            flex: 1;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-100 to-gray-200 font-sans leading-normal tracking-normal">
+    <nav class="fixed w-full z-10 top-0">
+        <div class="container mx-auto flex justify-start items-center p-2">
+            <h1 class="text-2xl font-bold">Optimizador de Consultas SQL</h1>
+        </div>
+    </nav>
+    <main class="container mx-auto mt-10 p-4">
+        <div class="bg-white shadow-lg rounded-lg p-8 max-w-3xl mx-auto">
+            <h2 class="text-3xl font-bold text-gray-800 mb-6 text-center">Optimiza tu Consulta SQL</h2>
+            <p class="text-gray-600 text-center mb-6">Ingresa tu consulta y obtén sugerencias para mejorar su rendimiento</p>
+            <form method="POST" class="mb-8">
+                <label for="consulta" class="block text-gray-700 font-bold mb-2">Consulta SQL:</label>
+                <textarea id="consulta" name="consulta" rows="8" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600" placeholder="Escribe tu consulta aquí...">{{ consulta or '' }}</textarea><br><br>
+                <button type="submit" class="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-500 transition-all duration-300">Optimizar</button>
+            </form>
+            {% if sugerencias and consulta %}
+                <h3 class="text-2xl font-semibold text-gray-800 mb-4">Sugerencias de Optimización:</h3>
+                <div class="grid grid-cols-1 gap-4">
+                    {% for sugerencia in sugerencias %}
+                        <div class="bg-blue-50 p-4 rounded-lg shadow">
+                            <p class="text-blue-700 font-medium">{{ sugerencia }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="mt-8 p-4 bg-gray-50 rounded-lg shadow-md">
+                <h4 class="text-xl font-semibold text-gray-700 mb-2 text-center">¿Quieres aprender más sobre SQL?</h4>
+                <p class="text-gray-600 mb-4">Visita <a href="https://www.w3schools.com/sql/" class="text-blue-600 hover:underline">W3Schools SQL</a> para obtener más información y recursos sobre cómo escribir consultas SQL más eficientes.</p>
+            </div>
+        </div>
+    </main>
+    <footer>
+        <div class="container mx-auto text-center py-4">
+            <p class="text-sm">&copy;2024 Desarrollado con <span class="text-red-500">&hearts;</span> por <a href="luigiadducci.netlify.app">Luigi Adducci</a></p>
+        </div>
+    </footer>
+</body>
+</html>
